@@ -2,6 +2,7 @@ var startButton = document.getElementById('start-btn')
 var scoreEl = document.querySelector('#score')
 var showContainer = document.getElementById('container')
 var nextButtonEl = document.getElementById('next-btn')
+
 let currentQuestion = 0;
 var questionEl = document.getElementById('question')
 var questionboxEl
@@ -15,52 +16,6 @@ var answerButtonC = document.getElementById('C')
 var answerButtonD = document.getElementById('D')
 let score = 0;
 
-//click event for starting game
-startButton.addEventListener('click', startGame)
-
-
-//timer using setInterval and clears when game is over
-function countDown() {
-    var timeInterval = setInterval(function() {
-        timeLeft--;
-        timerEl.textContent=timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timeInterval)
-            endGame()
-        }
-    }, 1000)
-}
-
-function startGame() {
-    timeLeft = 60;
-    countDown();
-    showContainer.classList.remove('hidden')
-    startButton.classList.add('hidden')
-    nextButtonEl.classList.remove('hidden')
-    genQuestion()
-}
-
-function genQuestion() {
-    let qArray = questions[currentQuestion]  
-
-    questionEl.innerHTML = "<p>"+ qArray.question+ "</p>";
-    answerButtonA.innerText = qArray.optionA;
-    answerButtonB.innerText = qArray.optionB;
-    answerButtonC.innerText = qArray.optionC;
-    answerButtonD.innerText = qArray.optionD;
-    
-}
-
-function checkAnswer(answer) {
-    if( answer == questions[currentQuestion].correct) {
-        scoreEl.textContent = score++;
-        $(questionEl).append('&#10003;')
-    } else {
-        timeLeft = timeLeft - 5;
-        $(questionEl).append('&#x2716;')
-    }
-
-}
 let questions = [
     {
         question: "CSS stands for..",
@@ -264,3 +219,63 @@ let questions = [
     }
   ]
 
+const lastQuestion = questions.length - 1
+
+//click event for starting game
+startButton.addEventListener('click', startGame)
+nextButtonEl.addEventListener('click', setNextQuestion)
+
+//timer using setInterval and clears when game is over
+function countDown() {
+    var timeInterval = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent=timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval)
+            endGame()
+        }
+    }, 1000)
+}
+
+function startGame() {
+    timeLeft = 60;
+    countDown();
+    showContainer.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    nextButtonEl.classList.remove('hidden')
+    genQuestion()
+}
+
+function genQuestion() {
+    let qArray = questions[currentQuestion]  
+
+    questionEl.innerHTML = "<p>"+ qArray.question+ "</p>";
+    answerButtonA.innerText = qArray.optionA;
+    answerButtonB.innerText = qArray.optionB;
+    answerButtonC.innerText = qArray.optionC;
+    answerButtonD.innerText = qArray.optionD;
+    
+}
+
+function checkAnswer(answer) {
+    if( answer == questions[currentQuestion].correct) {
+        scoreEl.textContent = score++;
+        $(questionEl).append('&#10003;')
+    } else {
+        timeLeft = timeLeft - 5;
+        $(questionEl).append('&#x2716;')
+    }
+    
+}
+
+function setNextQuestion() {
+    if (currentQuestion < lastQuestion) {
+        currentQuestion++;
+        genQuestion()
+    }
+}
+
+function endGame() {
+    
+}
+  
