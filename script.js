@@ -2,10 +2,12 @@ var startButton = document.getElementById('start-btn')
 var scoreEl = document.querySelector('#score')
 var showContainer = document.getElementById('container')
 var nextButtonEl = document.getElementById('next-btn')
-
+var hsInput = document.getElementById('hs-initials')
 let currentQuestion = 0;
 var questionEl = document.getElementById('question')
-var questionboxEl
+var questionboxEl = document.getElementById('question-box')
+var leaderBoardEl = document.getElementById('leaderboard')
+highscoresButton = document.getElementById('high-scores')
 //time var
 var timerEl = document.querySelector('#timer')
 var timeLeft;
@@ -86,7 +88,8 @@ let questions = [
         optionA: 'Hyperlink Text Markup Language', 
         optionB: 'Hypertext Markup Language', 
         optionB: 'Hypertext Markup Link',
-        optionC: 'Hypertext Mapping Link', 
+        optionC: 'Hypertext Mapping Link',
+        optionD: 'Hyperlink Markup Language', 
         correct: 'B'
     },
     {
@@ -243,6 +246,7 @@ function startGame() {
     showContainer.classList.remove('hidden')
     startButton.classList.add('hidden')
     nextButtonEl.classList.remove('hidden')
+    questionboxEl.classList.remove('hidden')
     genQuestion()
 }
 
@@ -276,6 +280,32 @@ function setNextQuestion() {
 }
 
 function endGame() {
+    var initials = prompt("What are your initials?");
+    var highscores = [
+
+    ]
     
-}
-  
+
+    if(localStorage.getItem('highscores')) {
+        highscores = JSON.parse(localStorage.getItem("highscores"))
+    }
+
+    var newScore = {
+        username: initials,
+        score: score
+    }
+
+    highscores.push(newScore)
+
+    localStorage.setItem("highscores", JSON.stringify(highscores))
+
+    alert("Click the 'High Scores' button!")
+
+    highscoresButton.addEventListener('click', displayHighScores)
+
+    function displayHighScores() {
+        questionboxEl.classList.add('hidden')
+        leaderBoardEl.classList.remove('hidden')
+        hsInput.textContent = localStorage.getItem("highscores");
+    }
+}  
