@@ -1,7 +1,9 @@
 var startButton = document.getElementById('start-btn')
 var scoreEl = document.querySelector('#score')
+var showContainer = document.getElementById('container')
+var nextButtonEl = document.getElementById('next-btn')
 //time var
-var timerEl = document.getElementById('#timer')
+var timerEl = document.querySelector('#timer')
 var timeLeft;
 //answer button var
 var answerButtonA = document.getElementById('A')
@@ -23,4 +25,12 @@ function countDown() {
             endGame()
         }
     }, 1000)
+}
+
+function startGame() {
+    timeLeft = 60;
+    countDown();
+    showContainer.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    nextButtonEl.classList.remove('hidden')
 }
