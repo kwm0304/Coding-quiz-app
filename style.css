@@ -2,7 +2,7 @@ body {
     background-color: rgb(114, 184, 214);
 }
 
-.container {
+/*.container {
     margin: auto;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@ body {
     border-radius: 5px;
     padding: 10px;
 }
-
+*/
 nav {
     display: flex;
     justify-content: space-between;
@@ -37,6 +37,7 @@ footer {
     font-size: 1.17em;
     font-weight: bold;
     color: white;
+    text-align: center;
 }
 
 .btn-list {

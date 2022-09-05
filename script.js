@@ -2,6 +2,8 @@ var startButton = document.getElementById('start-btn')
 var scoreEl = document.querySelector('#score')
 var showContainer = document.getElementById('container')
 var nextButtonEl = document.getElementById('next-btn')
+let currentQuestion = 0;
+var questionEl = document.getElementById('question')
 //time var
 var timerEl = document.querySelector('#timer')
 var timeLeft;
@@ -10,12 +12,54 @@ var answerButtonA = document.getElementById('A')
 var answerButtonB = document.getElementById('B')
 var answerButtonC = document.getElementById('C')
 var answerButtonD = document.getElementById('D')
+let score = 0;
 
 //click event for starting game
 startButton.addEventListener('click', startGame)
 
 
-const questions = [
+//timer using setInterval and clears when game is over
+function countDown() {
+    var timeInterval = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent=timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval)
+            endGame()
+        }
+    }, 1000)
+}
+
+function startGame() {
+    timeLeft = 60;
+    countDown();
+    showContainer.classList.remove('hidden')
+    startButton.classList.add('hidden')
+    nextButtonEl.classList.remove('hidden')
+    genQuestion()
+}
+
+function genQuestion() {
+    let qArray = questions[currentQuestion]  
+
+    questionEl.innerHTML = "<p>"+ qArray.question+ "</p>";
+    answerButtonA.innerText = qArray.optionA;
+    answerButtonB.innerText = qArray.optionB;
+    answerButtonC.innerText = qArray.optionC;
+    answerButtonD.innerText = qArray.optionD;
+    
+}
+
+function checkAnswer(answer) {
+    if( answer == questions[currentQuestion].correct) {
+        scoreEl.textContent = score++;
+        questionEl.style.color = rgb(19, 153, 19);
+    } else {
+        timeLeft = timeLeft - 5;
+    }
+
+}
+let questions = [
     {
         question: "CSS stands for..",
         optionA: 'Cascading Style Selector',
@@ -217,22 +261,4 @@ const questions = [
         correct: 'D'
     }
   ]
-//timer using setInterval and clears when game is over
-function countDown() {
-    var timeInterval = setInterval(function() {
-        timeLeft--;
-        timerEl.textContent=timeLeft;
-        if (timeLeft <= 0) {
-            clearInterval(timeInterval)
-            endGame()
-        }
-    }, 1000)
-}
 
-function startGame() {
-    timeLeft = 60;
-    countDown();
-    showContainer.classList.remove('hidden')
-    startButton.classList.add('hidden')
-    nextButtonEl.classList.remove('hidden')
-}
