@@ -1,0 +1,156 @@
+body {
+    background-color: rgb(114, 184, 214);
+}
+
+.container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    max-width: 80%;
+    height: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 1.17em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#high-scores {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.17em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.17em;
+    font-weight: bold;
+    color: white;
+}
+
+.btn-list {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    gap: 5px;
+}
+
+.btn {
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: rgb(114, 184, 214);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.15385;
+  margin: auto;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+#question {
+    padding: 10px;
+    margin: 20px;
+    text-align: center;
+}
+
+#score {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    font-size: 60px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(114, 184, 214);
+}
+
+#timer {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    font-size: 60px;
+    background-color: white;
+    border-radius: 5px;
+    color: rgb(114, 184, 214);
+    padding-top: 10px;
+    margin-top: 5px;
+    
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(114, 184, 214) ;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 10px;
+    color: white;
+    outline: none;
+}
+
+#start-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.17em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+#next-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.17em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+#question {
+    color: white;
+    font-size: 1.17em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.correct {
+    background-color: rgb(19, 153, 19);
+}
+
+.wrong {
+    background-color: rgb(212, 32, 32);
+}

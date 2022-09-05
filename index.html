@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h3 id="quiz-title">Coding Quiz</h3>
+            <button id="high-scores">High Scores</button>
+        </nav>
+    </header>
+    <section id="container" class="hidden">    
+        <div id="question-box">
+            <div id="question"></div>
+            <div id="answer-button" class="btn-list">
+            </div>
+        </div>
+    </section>    
+    <footer>
+        <div class="controls">
+            <button id="start-btn">Start</button>
+            <button id="next-btn" class="hidden">Next</button>
+        </div>
+        <div id="scoreboard">
+            <div id="score">0</div>
+            <div id="timer">60</div>
+        </div>    
+        <p><span>Instructions: Answer as many questions as you can in 60 seconds, 4 seconds will be deducted for incorrect answers. Good Luck!</span></p>
+    </footer> 
+</body>
+</html>
