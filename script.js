@@ -4,6 +4,7 @@ var showContainer = document.getElementById('container')
 var nextButtonEl = document.getElementById('next-btn')
 let currentQuestion = 0;
 var questionEl = document.getElementById('question')
+var questionboxEl
 //time var
 var timerEl = document.querySelector('#timer')
 var timeLeft;
@@ -53,9 +54,10 @@ function genQuestion() {
 function checkAnswer(answer) {
     if( answer == questions[currentQuestion].correct) {
         scoreEl.textContent = score++;
-        questionEl.style.color = rgb(19, 153, 19);
+        $(questionEl).append('&#10003;')
     } else {
         timeLeft = timeLeft - 5;
+        $(questionEl).append('&#x2716;')
     }
 
 }
